@@ -4,7 +4,7 @@ Process the collected AP data using propeller network. It will take a few mins t
 
  1. Create a new copy of the CSV file and delete all info on the coordinate systems and only keep the raw data for further formatting. The data should be look like this 
 
- ![data for conversion](Screenshot_36.png)
+ ![data for conversion](images/Screenshot_36.png)
 
  3. Open a fresh ArcGIS Pro map on your current workspace. Drag and drop the CSV file.
  4. Select the "Map" > "XY Point to Table" and import the data. Latitudes, Longitudes, and Altitudes (Orthometric height) need to be selected. For coordinate systems, use  **EPSG: 6318** (not EPSG: 6319) for data import.
@@ -13,7 +13,7 @@ Process the collected AP data using propeller network. It will take a few mins t
  7. Right-click on the **Project_XY** and view the attribute table
  8. On the attribute table, add new field by using the option on the left top. You will add two columns, "WGS_84_Lat" and "WGS_84_Lon", one by one. The data type will be double.
 
-![new field](Screenshot_38.png)
+![new field](images/Screenshot_38.png)
     
  9. Right-click on one of the columns and select "Calculate Geometry". In the geometry attribute, select "WGS_84_Lat" and "WGS_84_Lon", and their property would be "Point Y-coordinate" and "Point X-coordinate", respectively. For the coordinate system, select **Project_XY**.
  10. Run the tools, then the location information is shown on the attribute table. Select all data, copy, and paste them into a new or existing CSV file to be used for using in Agisoft Metashape.
