@@ -3,15 +3,20 @@
 Process the collected AP data using propeller network. It will take a few mins to a few hours for the data to be corrected and processed. Download the data in CSV format. If you check the data, you will find the coordinate systems information. Often, it is EPSG: 6319 for the latitude and longitude. Our goal is to convert them to EPSG: 4326 (World Geodetic System 1984). Thus, we need to convert them. The process is provided below -
 
  1. Create a new copy of the CSV file and delete all info on the coordinate systems and only keep the raw data for further formatting. The data should be look like this 
+
  ![data for conversion](Screenshot_36.png)
- 2. Open a fresh ArcGIS Pro map on your current workspace. Drag and drop the CSV file.
- 3. Select the "Map" > "XY Point to Table" and import the data. Latitudes, Longitudes, and Altitudes (Orthometric height) need to be selected. For coordinate systems, use  **EPSG: 6318** (not EPSG: 6319) for data import.
- 4. Once the data is imported, "Analysis" > "Tools" > search and use "Project" tools.
- 5. Input your point shapefile, provide names for the possible output file (assume **Project_XY**), and select output coordinate systems EPSG: 4326 and run the tools. The location information has been updated but the data is not viewable as of right now.
- 6. Right-click on the **Project_XY** and view the attribute table
- 7. On the attribute table, bottom of the last row, click there to add new columns. You will add two columns, "WGS_84_Lat" and "WGS_84_Lon", one by one. The data type will be double.
- 8. Right-click on one of the columns and select "Calculate Geometry". In the geometry attribute, select "WGS_84_Lat" and "WGS_84_Lon", and their property would be "Point Y-coordinate" and "Point X-coordinate", respectively. For the coordinate system, select **Project_XY**.
- 9. Run the tools, then the location information is shown on the attribute table. Select all data, copy, and paste them into a new or existing CSV file to be used for using in Agisoft Metashape.
+
+ 3. Open a fresh ArcGIS Pro map on your current workspace. Drag and drop the CSV file.
+ 4. Select the "Map" > "XY Point to Table" and import the data. Latitudes, Longitudes, and Altitudes (Orthometric height) need to be selected. For coordinate systems, use  **EPSG: 6318** (not EPSG: 6319) for data import.
+ 5. Once the data is imported, "Analysis" > "Tools" > search and use "Project" tools.
+ 6. Input your point shapefile, provide names for the possible output file (assume **Project_XY**), and select output coordinate systems EPSG: 4326 and run the tools. The location information has been updated but the data is not viewable as of right now.
+ 7. Right-click on the **Project_XY** and view the attribute table
+ 8. On the attribute table, add new field by using the option on the left top. You will add two columns, "WGS_84_Lat" and "WGS_84_Lon", one by one. The data type will be double.
+
+![new field](Screenshot_38.png)
+    
+ 9. Right-click on one of the columns and select "Calculate Geometry". In the geometry attribute, select "WGS_84_Lat" and "WGS_84_Lon", and their property would be "Point Y-coordinate" and "Point X-coordinate", respectively. For the coordinate system, select **Project_XY**.
+ 10. Run the tools, then the location information is shown on the attribute table. Select all data, copy, and paste them into a new or existing CSV file to be used for using in Agisoft Metashape.
  
 # Agisoft Metashape Processing
  1. Align - HIgh accuracy, Reference Preselection (if geotagging exists), default key and tie point limits (40,000, 4,000)
